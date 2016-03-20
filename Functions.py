@@ -52,7 +52,7 @@ def average(block):
     h, w = block.shape
     value = 0
     counter = 0
-    for x in range(0, w) :
+    for x in range(0, w):
         for y in range(0, h):
             value += block[x, y]
             counter += 1

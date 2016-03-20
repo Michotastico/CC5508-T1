@@ -25,25 +25,25 @@ def apply_watermark(filename):
             for y in range(0, 4):
                 block_B[x, y] = Functions.removeLSB(block_B[x, y])
         avg_B = Functions.average(block_B)
-        for x in range(0, 2):
-            for y in range(0, 2):
-                x_coor = x * 2
-                y_coor = y * 2
-                block = block_B[x_coor: x_coor+2, y_coor: y_coor+2]
-                average = Functions.average(block)
+        for i in range(0, 2):
+            for j in range(0, 2):
+                i_coor = i * 2
+                j_coor = j * 2
+                blockBS = block_B[i_coor: i_coor+2, j_coor: j_coor+2]
+                average = Functions.average(blockBS)
                 v = 0
                 if average >= avg_B:
                     v = 1
                 p = 1
                 if Functions.ones_in_sixMSB(average) % 2 == 0:
                     p = 0
-                subblock_a = block_A[x_coor: x_coor+2, y_coor: y_coor+2]
+                subblock_a = block_A[i_coor: i_coor+2, j_coor: j_coor+2]
                 avg_as = Functions.average(subblock_a)
                 r = Functions.split_binary_sixMSB(avg_as)
-                block[0][0] = block[0][0] + v + r[0]
-                block[0][1] = block[0][1] + p + r[1]
-                block[1][0] = block[1][0] + r[2] + r[3]
-                block[1][1] = block[1][1] + r[4] + r[5]
+                blockBS[0][0] = blockBS[0][0] + v + r[0]
+                blockBS[0][1] = blockBS[0][1] + p + r[1]
+                blockBS[1][0] = blockBS[1][0] + r[2] + r[3]
+                blockBS[1][1] = blockBS[1][1] + r[4] + r[5]
     return image
 
 

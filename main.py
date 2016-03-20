@@ -1,3 +1,5 @@
-import Tests.Test_Watermark as wm
+import Tests.Test_Watermark as test
 
-wm.test1()
+
+test.test1()
+test.test2()
