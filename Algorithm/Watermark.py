@@ -9,8 +9,8 @@ def apply_watermark(filename):
     height, width = image.shape
     hor_block = height / 4
     ver_block = width / 4
-    for x in range(0, hor_block - 1):
-        for y in range(0, ver_block - 1):
+    for x in range(0, hor_block):
+        for y in range(0, ver_block):
             x_coor = x * 4
             y_coor = y * 4
             block = image[x_coor: x_coor + 4, y_coor: y_coor + 4]
@@ -18,7 +18,7 @@ def apply_watermark(filename):
     n = len(blocks)
     k = Functions.get_biggest_prime(n)
 
-    for index in range(0, n - 1):
+    for index in range(0, n):
         block_B = blocks[index]
         block_A = (blocks[Functions.mapping(index + 1, k, n) - 1]).copy()
         for x in range(0, 4):

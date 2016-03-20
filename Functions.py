@@ -52,8 +52,8 @@ def average(block):
     h, w = block.shape
     value = 0
     counter = 0
-    for x in range(0, w - 1):
-        for y in range(0, h - 1):
+    for x in range(0, w) :
+        for y in range(0, h):
             value += block[x, y]
             counter += 1
     return value/counter
