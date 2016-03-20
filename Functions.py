@@ -49,7 +49,7 @@ def average(block):
     :param block: Matrix
     :return: Average of block
     '''
-    h, w = block.shape()
+    h, w = block.shape
     value = 0
     counter = 0
     for x in range(0, w - 1):
