@@ -67,3 +67,21 @@ def ones_in_sixMSB(n):
     '''
     number = removeLSB(n)
     return bin(number).count("1")
+
+
+def split_binary_sixMSB(n):
+    '''
+    Function who return the six MSB of a number in a array of int
+    :param n: Number to be splitted
+    :return: list of int
+    '''
+    shifted = n >> 2
+    binary = bin(shifted)
+    binary = binary[2:]
+    size = len(binary)
+    for i in range(0, 6 - size):
+        binary = '0' + binary
+    splitted = []
+    for c in binary:
+        splitted.append(int(c))
+    return splitted
