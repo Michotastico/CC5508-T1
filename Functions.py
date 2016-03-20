@@ -66,7 +66,16 @@ def ones_in_sixMSB(n):
     :return: The number of ones in the six MSBs of the number n
     '''
     number = removeLSB(n)
-    return bin(number).count("1")
+    return ones_in(number)
+
+
+def ones_in(n):
+    '''
+    Counter of ones in n
+    :param n: Number
+    :return: The number of ones in the number n
+    '''
+    return bin(n).count("1")
 
 
 def split_binary_sixMSB(n):

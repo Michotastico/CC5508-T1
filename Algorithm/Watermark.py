@@ -21,12 +21,12 @@ def apply_watermark(filename):
     for index in range(0, n - 1):
         block_B = blocks[index]
         block_A = (blocks[Functions.mapping(index + 1, k, n) - 1]).copy()
-        for x in range(0, 3):
-            for y in range(0, 3):
+        for x in range(0, 4):
+            for y in range(0, 4):
                 block_B[x, y] = Functions.removeLSB(block_B[x, y])
         avg_B = Functions.average(block_B)
-        for x in range(0, 1):
-            for y in range(0, 1):
+        for x in range(0, 2):
+            for y in range(0, 2):
                 x_coor = x * 2
                 y_coor = y * 2
                 block = block_B[x_coor: x_coor+2, y_coor: y_coor+2]
