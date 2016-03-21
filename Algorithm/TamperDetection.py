@@ -1,5 +1,4 @@
 import Functions
-import numpy
 
 
 def extract_LSB(pixel, pos):

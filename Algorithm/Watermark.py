@@ -1,5 +1,4 @@
-import matplotlib.pyplot as plt
-from skimage import feature, io, filters, data
+from skimage import io
 import Functions
 
 
