@@ -51,3 +51,26 @@ def level1(_block):
                     else:
                         bs.fill(False)
     return matrix
+
+
+def level2(_block):
+    matrix = level1(_block)
+    height, width = matrix.shape
+    hor_block = height / 4
+    ver_block = width / 4
+    for x in range(0, hor_block):
+        for y in range(0, ver_block):
+            x_coor = x * 4
+            y_coor = y * 4
+            block = matrix[x_coor: x_coor + 4, y_coor: y_coor + 4]
+            isInvalid = False
+            for i in range(0, 4):
+                for j in range(0, 4):
+                    if block[i][j] == False:
+                        isInvalid = True
+                        break
+                if isInvalid:
+                    break
+            if isInvalid:
+                block.fill(False)
+    return matrix
