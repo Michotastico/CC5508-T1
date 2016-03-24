@@ -4,6 +4,8 @@ import Functions
 def extract_LSB(pixel, pos):
     tmp = bin(pixel)
     tmp = tmp[2:]
+    if len(tmp) == 1 and pos > 1:
+        return 0
     v = int(tmp[len(tmp)-pos])
     return v
 
