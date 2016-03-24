@@ -31,13 +31,13 @@ def recovery(block):
                 i_coor = i * 2
                 j_coor = j * 2
                 blockBS = block_B[i_coor: i_coor+2, j_coor: j_coor+2]
-                r0 = td.extract_LSB(blockBS[0,0], 1)<<8
-                r1 = td.extract_LSB(blockBS[0,1], 1)<<7
-                r2 = td.extract_LSB(blockBS[1,0], 1)<<6
-                r3 = td.extract_LSB(blockBS[1,0], 2)<<5
-                r4 = td.extract_LSB(blockBS[1,1], 1)<<4
-                r5 = td.extract_LSB(blockBS[1,1], 2)<<3
-                r = r0 + r1+ r2+ r3+ r4+ r5
+                r0 = td.extract_LSB(blockBS[0,0], 1)<< 7
+                r1 = td.extract_LSB(blockBS[0,1], 1)<< 6
+                r2 = td.extract_LSB(blockBS[1,0], 1)<< 5
+                r3 = td.extract_LSB(blockBS[1,0], 2)<< 4
+                r4 = td.extract_LSB(blockBS[1,1], 1)<< 3
+                r5 = td.extract_LSB(blockBS[1,1], 2)<< 2
+                r = r0 + r1 + r2+ r3 + r4 + r5
                 blockAS = block_C[i_coor: i_coor+2, j_coor: j_coor+2]
                 blockAS.fill(r)
     return recovered
