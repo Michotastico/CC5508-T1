@@ -117,3 +117,42 @@ def test6():
 
     io.imsave('Images/TestRecovery2.jpg', Recovered)
     plt.show()
+
+
+def test_levels():
+    Watermarked = wm.apply_watermark('Images/Test1.jpg')
+    Watermarked = drawImage(Watermarked)
+    Level1 = td.level1(Watermarked)
+    Level2 = td.level1(Watermarked)
+    Level3 = td.level1(Watermarked)
+
+    fig, ((ax_1, ax_2), (ax_3, ax_4)) = plt.subplots(nrows=2, ncols=2, figsize=(10, 5))
+    ax_1.imshow(Watermarked, cmap=plt.cm.gray)
+    ax_1.axis('off')
+    ax_1.set_title('Watermarked', fontsize=10)
+
+    ax_2.imshow(Level1, cmap=plt.cm.gray)
+    ax_2.axis('off')
+    ax_2.set_title('Level1', fontsize=10)
+
+    ax_3.imshow(Level2, cmap=plt.cm.gray)
+    ax_3.axis('off')
+    ax_3.set_title('Level2', fontsize=10)
+
+    ax_4.imshow(Level3, cmap=plt.cm.gray)
+    ax_4.axis('off')
+    ax_4.set_title('Level3', fontsize=10)
+
+    plt.savefig('Images/levels.jpg', bbox_inches='tight')
+    plt.show()
+
+
+def drawImage(image):
+    a, b = image.shape
+    aa = 0
+    bb = 0
+    while aa != a and bb != b:
+        image[aa][bb] = 255
+        aa += 1
+        bb += 1
+    return image
