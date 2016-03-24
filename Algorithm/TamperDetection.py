@@ -34,10 +34,10 @@ def level1(_block):
                         for b in range(0, 2):
                             bs[a, b] = Functions.removeLSB(bs[a, b])
                     average = Functions.average(bs)
-                    ns = Functions.ones_in(average)
-                    pp = 0
+                    ns = Functions.ones_in_sixMSB(average)
+                    pp = 1
                     if ns % 2 == 0:
-                        pp = 1
+                        pp = 0
                     if p != pp:
                         bs.fill(False)
                         continue
