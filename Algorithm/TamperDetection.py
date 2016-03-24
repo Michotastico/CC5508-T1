@@ -74,3 +74,66 @@ def level2(_block):
             if isInvalid:
                 block.fill(False)
     return matrix
+
+
+def level3(_block):
+    matrix = level2(_block)
+    height, width = matrix.shape
+    hor_block = height / 4
+    ver_block = width / 4
+    for x in range(0, hor_block):
+        for y in range(0, ver_block):
+            x_coor = x * 4
+            y_coor = y * 4
+            block = matrix[x_coor: x_coor + 4, y_coor: y_coor + 4]
+            if block[0][0] == False:
+                continue
+            neighborhood = []
+            counter = 0
+            if x == 0:
+                if y == 0 or y == (ver_block - 1):
+                    continue
+                else:
+                    neighborhood.append(matrix[x_coor: x_coor + 4, y_coor + 4: y_coor + 8])  # UM
+                    neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor + 4: y_coor + 8])  # UR
+                    neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor: y_coor + 4])  # MR
+                    neighborhood.append(matrix[x_coor: x_coor + 4, y_coor - 4: y_coor])  # BM
+                    neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor - 4: y_coor])  # BR
+            elif x == (hor_block - 1):
+                if y == 0 or y == (ver_block - 1):
+                    continue
+                else:
+                    neighborhood.append(matrix[x_coor - 4: x_coor, y_coor + 4: y_coor + 8])  # UL
+                    neighborhood.append(matrix[x_coor: x_coor + 4, y_coor + 4: y_coor + 8])  # UM
+                    neighborhood.append(matrix[x_coor - 4: x_coor, y_coor: y_coor + 4])  # ML
+                    neighborhood.append(matrix[x_coor - 4: x_coor, y_coor - 4: y_coor])  # BL
+                    neighborhood.append(matrix[x_coor: x_coor + 4, y_coor - 4: y_coor])  # BM
+            elif y == 0:
+                neighborhood.append(matrix[x_coor - 4: x_coor, y_coor + 4: y_coor + 8])  # UL
+                neighborhood.append(matrix[x_coor: x_coor + 4, y_coor + 4: y_coor + 8])  # UM
+                neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor + 4: y_coor + 8])  # UR
+                neighborhood.append(matrix[x_coor - 4: x_coor, y_coor: y_coor + 4])  # ML
+                neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor: y_coor + 4])  # MR
+            elif y == (ver_block - 1):
+                neighborhood.append(matrix[x_coor - 4: x_coor, y_coor: y_coor + 4])  # ML
+                neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor: y_coor + 4])  # MR
+                neighborhood.append(matrix[x_coor - 4: x_coor, y_coor - 4: y_coor])  # BL
+                neighborhood.append(matrix[x_coor: x_coor + 4, y_coor - 4: y_coor])  # BM
+                neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor - 4: y_coor])  # BR
+            else:
+                neighborhood.append(matrix[x_coor - 4: x_coor, y_coor + 4: y_coor + 8])  # UL
+                neighborhood.append(matrix[x_coor: x_coor + 4, y_coor + 4: y_coor + 8])  # UM
+                neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor + 4: y_coor + 8])  # UR
+                neighborhood.append(matrix[x_coor - 4: x_coor, y_coor: y_coor + 4])  # ML
+                neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor: y_coor + 4])  # MR
+                neighborhood.append(matrix[x_coor - 4: x_coor, y_coor - 4: y_coor])  # BL
+                neighborhood.append(matrix[x_coor: x_coor + 4, y_coor - 4: y_coor])  # BM
+                neighborhood.append(matrix[x_coor + 4: x_coor + 8, y_coor - 4: y_coor])  # BR
+
+            for n in neighborhood:
+                if n[0][0] == False:
+                    counter += 1
+            if counter >= 5:
+                block.fill(False)
+    return matrix
+

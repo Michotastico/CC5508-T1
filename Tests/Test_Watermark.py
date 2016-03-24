@@ -62,6 +62,25 @@ def test3():
 
 def test4():
     Watermarked = wm.apply_watermark('Images/Test1.jpg')
+    level3 = Watermarked.copy()
+    level3 = td.level1(level3)
+    fig, (ax_original, ax_watermarked) = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
+    ax_original.imshow(level3, cmap=plt.cm.gray)
+    ax_original.axis('off')
+    ax_original.set_title('level3', fontsize=10)
+    ax_watermarked.imshow(Watermarked, cmap=plt.cm.gray)
+    ax_watermarked.axis('off')
+    ax_watermarked.set_title('Watermarked', fontsize=10)
+
+    fig.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9,
+                         bottom=0.02, left=0.02, right=0.98)
+
+    io.imsave('Images/Test2L3.jpg', level3)
+    plt.show()
+
+
+def test5():
+    Watermarked = wm.apply_watermark('Images/Test1.jpg')
     Recovered = rc.recovery(Watermarked)
     fig, (ax_original, ax_watermarked) = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
     ax_original.imshow(Recovered, cmap=plt.cm.gray)
@@ -78,7 +97,7 @@ def test4():
     plt.show()
 
 
-def test5():
+def test6():
     Watermarked = wm.apply_watermark('Images/Test1.jpg')
     h, w = Watermarked.shape
     for i in range(0, w):
