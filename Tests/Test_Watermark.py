@@ -123,8 +123,8 @@ def test_levels():
     Watermarked = wm.apply_watermark('Images/Test1.jpg')
     Watermarked = drawImage(Watermarked)
     Level1 = td.level1(Watermarked)
-    Level2 = td.level1(Watermarked)
-    Level3 = td.level1(Watermarked)
+    Level2 = td.level2(Watermarked)
+    Level3 = td.level3(Watermarked)
 
     fig, ((ax_1, ax_2), (ax_3, ax_4)) = plt.subplots(nrows=2, ncols=2, figsize=(10, 5))
     ax_1.imshow(Watermarked, cmap=plt.cm.gray)
@@ -153,6 +153,11 @@ def drawImage(image):
     bb = 0
     while aa != a and bb != b:
         image[aa][bb] = 255
+        image[a - aa - 1][bb] = 255
         aa += 1
         bb += 1
+    for i in range(0, a):
+        image[i][b/2] = 255
+    for j in range(0, b):
+        image[a/2][j] = 255
     return image
