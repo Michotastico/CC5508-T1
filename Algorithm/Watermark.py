@@ -1,21 +1,28 @@
-from skimage import io
+from skimage import io, color
+import numpy
 import Functions
 
 
 def apply_watermark(filename):
     img = io.imread(filename) # Image in gray scale
+    img = color.rgb2grey(img)
+    if img.dtype.name != 'uint8':
+        img = img * 255
+        img = img.astype(numpy.uint8)
     image = img.copy()
     blocks = []
-    height, width = image.shape
+    width, height = image.shape
     hor_block = width / 4
     ver_block = height / 4
+    block_counter = 0
     for x in range(0, hor_block):
         for y in range(0, ver_block):
             x_coor = x * 4
             y_coor = y * 4
             block = image[x_coor: x_coor + 4, y_coor: y_coor + 4]
             blocks.append(block)
-    n = len(blocks)
+            block_counter += 1
+    n = block_counter
     k = Functions.get_biggest_prime(n)
 
     for index in range(0, n):

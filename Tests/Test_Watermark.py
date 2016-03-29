@@ -23,7 +23,7 @@ def test1():
     plt.show()
 
 def test2():
-    Watermarked = wm.apply_watermark('Images/Test1.jpg')
+    Watermarked = wm.apply_watermark('Images/eight.png')
     level1 = Watermarked.copy()
     level1 = td.level1(level1)
     fig, (ax_original, ax_watermarked) = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
@@ -120,8 +120,12 @@ def test6():
 
 
 def test_levels():
-    Watermarked = wm.apply_watermark('Images/Test1.jpg')
+    Watermarked = wm.apply_watermark('Images/frutas.jpg')
+    io.imsave('Images/SaveTest.png', Watermarked)
+    Watermarked = io.imread('Images/SaveTest.png')
     Watermarked = drawImage(Watermarked)
+    io.imsave('Images/SaveTest.png', Watermarked)
+    Watermarked = io.imread('Images/SaveTest.png')
     Level1 = td.level1(Watermarked)
     Level2 = td.level2(Watermarked)
     Level3 = td.level3(Watermarked)
