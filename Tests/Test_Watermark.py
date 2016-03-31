@@ -20,6 +20,7 @@ def test1():
                          bottom=0.02, left=0.02, right=0.98)
 
     io.imsave('Images/Test1W.jpg', Watermarked)
+    plt.savefig('Images/Contraste.jpg', bbox_inches='tight')
     plt.show()
 
 def test2():
@@ -83,17 +84,18 @@ def test5():
     Watermarked = wm.apply_watermark('Images/Test1.jpg')
     Recovered = rc.recovery(Watermarked)
     fig, (ax_original, ax_watermarked) = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
-    ax_original.imshow(Recovered, cmap=plt.cm.gray)
+    ax_original.imshow(Watermarked, cmap=plt.cm.gray)
     ax_original.axis('off')
-    ax_original.set_title('Recovered', fontsize=10)
-    ax_watermarked.imshow(Watermarked, cmap=plt.cm.gray)
+    ax_original.set_title('Watermarked', fontsize=10)
+    ax_watermarked.imshow(Recovered, cmap=plt.cm.gray)
     ax_watermarked.axis('off')
-    ax_watermarked.set_title('Watermarked', fontsize=10)
+    ax_watermarked.set_title('Recovered', fontsize=10)
 
     fig.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9,
                          bottom=0.02, left=0.02, right=0.98)
 
     io.imsave('Images/TestRecovery1.jpg', Recovered)
+    plt.savefig('Images/ImgWR.jpg', bbox_inches='tight')
     plt.show()
 
 
@@ -102,20 +104,21 @@ def test6():
     h, w = Watermarked.shape
     for i in range(0, w):
         for o in range(0, h/4):
-            Watermarked[i, o] = 255
+            Watermarked[i, o] = 0
     Recovered = rc.recovery(Watermarked)
     fig, (ax_original, ax_watermarked) = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
-    ax_original.imshow(Recovered, cmap=plt.cm.gray)
+    ax_original.imshow(Watermarked, cmap=plt.cm.gray)
     ax_original.axis('off')
-    ax_original.set_title('Recovered', fontsize=10)
-    ax_watermarked.imshow(Watermarked, cmap=plt.cm.gray)
+    ax_original.set_title('Watermarked', fontsize=10)
+    ax_watermarked.imshow(Recovered, cmap=plt.cm.gray)
     ax_watermarked.axis('off')
-    ax_watermarked.set_title('Watermarked', fontsize=10)
+    ax_watermarked.set_title('Recovered', fontsize=10)
 
     fig.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9,
                          bottom=0.02, left=0.02, right=0.98)
 
     io.imsave('Images/TestRecovery2.jpg', Recovered)
+    plt.savefig('Images/ImgWPR.jpg', bbox_inches='tight')
     plt.show()
 
 

@@ -12,9 +12,9 @@ def extract_LSB(pixel, pos):
 
 def level1(_block):
     matrix = _block.copy()
-    height, width = matrix.shape
-    hor_block = height / 4
-    ver_block = width / 4
+    width, height = matrix.shape
+    hor_block = width / 4
+    ver_block = height / 4
     for x in range(0, hor_block):
         for y in range(0, ver_block):
             x_coor = x * 4
@@ -55,9 +55,9 @@ def level1(_block):
 
 def level2(_block):
     matrix = level1(_block)
-    height, width = matrix.shape
-    hor_block = height / 4
-    ver_block = width / 4
+    width, height = matrix.shape
+    hor_block = width / 4
+    ver_block = height / 4
     for x in range(0, hor_block):
         for y in range(0, ver_block):
             x_coor = x * 4
@@ -78,9 +78,9 @@ def level2(_block):
 
 def level3(_block):
     matrix = level2(_block)
-    height, width = matrix.shape
-    hor_block = height / 4
-    ver_block = width / 4
+    width, height = matrix.shape
+    hor_block = width / 4
+    ver_block = height / 4
     for x in range(0, hor_block):
         for y in range(0, ver_block):
             x_coor = x * 4

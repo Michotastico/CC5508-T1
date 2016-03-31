@@ -8,7 +8,7 @@ def recovery(block):
     image = block.copy()
     blocks = []
     blocks2 = []
-    height, width = image.shape
+    width, height = image.shape
     hor_block = width / 4
     ver_block = height / 4
     for x in range(0, hor_block):
